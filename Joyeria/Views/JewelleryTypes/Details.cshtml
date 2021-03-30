@@ -1,0 +1,23 @@
+﻿@model Joyeria.Models.JewelleryType
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1 class="heading-font text-center">Jewellery Type Details</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.JewelleryTypeName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.JewelleryTypeName)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" class="btn btn-secondary" asp-route-id="@Model.JewelleryTypeID">Edit</a> |
+    <a asp-action="Index">View All Jewellery Type</a>
+</div>

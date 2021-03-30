@@ -1,0 +1,77 @@
+﻿@model Joyeria.Models.JewelleryInfo
+
+@{
+    ViewData["Title"] = "Jewellery Details";
+}
+
+<h1 class="heading-font text-center">Jewellery Details</h1>
+
+<div class="row">
+    <div class="col-md-6">
+        <h1 class="font1">@Model.Title</h1>
+        <h2 class="font2">@Model.JewelleryType.JewelleryTypeName</h2>
+        <h2 class="font2">@Model.GenderType.GenderTypeName</h2>
+        <h2 class="font2">$ @Model.Price</h2>
+        <h2 class="font2">@Model.Weight gm</h2>
+        <h2 class="font2">Description</h2>
+        <p class="font1">@Model.Description</p>
+    </div>
+    <div class="col-md-6">
+        <div class="card h-100 border-primary">
+            <img src="~/photos/@Model.JewelleryID@Model.Extension" alt="" style="width:100%">
+            </div>
+        </div>
+    </div>        
+</div>
+<div class="container">
+
+    <h1 class="heading-font text-center">Jewellery Reviews</h1>
+    <div class="row">
+        <div class="col-md-12">
+            @if (Model.JewelleryReviews.Count() == 0)
+            {
+                <h1 class="font1 text-center">No Reviews.</h1>
+            }
+            else
+            {
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                Review Text
+                            </th>
+                            <th>
+                                Reviewer Name
+                            </th>
+                            <th>
+                                Review Date
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.JewelleryReviews)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ReviewText)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ReviewerName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ReviewDate)
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <a class="btn btn-primary text-center" asp-action="AddReview" asp-route-id="@Model.JewelleryTypeID">Add Review</a>
+        </div>
+    </div>
+
+</div>

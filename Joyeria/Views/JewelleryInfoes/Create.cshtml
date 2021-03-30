@@ -1,0 +1,60 @@
+﻿@model Joyeria.Models.JewelleryInfo
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1 class="text-center heading-font">Add New Jewellery</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <textarea asp-for="Description" class="form-control"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Weight" class="control-label"></label>
+                <input asp-for="Weight" class="form-control" />
+                <span asp-validation-for="Weight" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GenderTypeID" class="control-label"></label>
+                <select asp-for="GenderTypeID" class="form-control" asp-items="ViewBag.GenderTypeID"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="JewelleryTypeID" class="control-label"></label>
+                <select asp-for="JewelleryTypeID" class="form-control" asp-items="ViewBag.JewelleryTypeID"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="File.FormFile" class="control-label"></label>
+                <input asp-for="File.FormFile" type="file" class="form-control">
+                <span asp-validation-for="File.FormFile" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Add New Jewellery" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">View All Jewellery</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

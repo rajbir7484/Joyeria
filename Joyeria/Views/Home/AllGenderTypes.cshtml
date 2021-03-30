@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Joyeria.Models.GenderType>
+
+@{
+    ViewData["Title"] = "All Gender Types";
+}
+
+<div class="text-center">
+    <h1 class="display-4 heading-font">All Gender Types</h1>
+</div>
+<div class="row" style="margin-bottom:50px;">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-3">
+            <div class="card w-100">
+                <center>
+                    <img src="~/slides/gendericon.png" alt="" style="width:100%">
+                </center>
+                <div class="card-body">
+                    <h5 class="card-text">
+                        @item.GenderTypeName
+                    </h5>
+                    <a class="btn btn-primary btn-block" asp-action="ViewJewelleryByGender" asp-route-id="@item.GenderTypeID">View Jewellery</a>
+                </div>
+
+            </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Joyeria.Models.JewelleryInfo>
+
+@{
+    ViewData["Title"] = "ViewAllJewellery";
+}
+
+<h1 class="heading-font text-center">Jewelleries</h1>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 border-primary">
+                <img src="~/photos/@item.JewelleryID@item.Extension" alt="" style="width:100%">
+                <div class="card-body">
+                    <h4 class="card-title font1">
+                        <p>@Html.DisplayFor(modelItem => item.Title)</p>
+                    </h4>
+                    <h5 class="font2">Price: $ @Html.DisplayFor(modelItem => item.Price)</h5>
+                    <h5 class="font2">Weight: @Html.DisplayFor(modelItem => item.Weight) gm</h5>
+                </div>
+                <div class="card-footer">
+                    <p>
+                        <a class="btn btn-primary" asp-action="ViewJewelleryDetails" asp-route-id="@item.JewelleryID">View Jewellery Details</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    }
+</div>
